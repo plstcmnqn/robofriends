@@ -3,9 +3,9 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "mstile-150x150.png",
       "sizes": "144x144",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
      {
       "src": "/android-chrome-192x192.png",
