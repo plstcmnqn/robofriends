@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import{Provider} from 'react-redux';
+import{createStore, applyMiddleware,combineReducers} from 'redux';
+import{createLogger} from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import './index.css';
 //import Card from './Card'
 //import CardList from './CardList'
@@ -7,10 +11,19 @@ import App from './containers/App';
 //import App from './App'; //no extension defaults to jscript
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
+import {searchRobots,requestRobots} from './reducers';
 //import {robots} from './robots';
+
+const logger = createLogger();
+
+const rootReducer = combineReducers({searchRobots,requestRobots})
+const store = createStore(rootReducer,applyMiddleware(thunkMiddleware,logger))
+
 ReactDOM.render(
 	
+	<Provider store ={store}>
 	<App />
+	</Provider>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
